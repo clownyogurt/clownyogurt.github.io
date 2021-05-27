@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://https://clownyogurt.github.io</id>
+    <title>老鄂嘚吧嘚</title>
+    <updated>2021-05-27T06:44:59.660Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://https://clownyogurt.github.io"/>
+    <link rel="self" href="https://https://clownyogurt.github.io/atom.xml"/>
+    <subtitle>反正也没人看，我一个人瞎嗨</subtitle>
+    <logo>https://https://clownyogurt.github.io/images/avatar.png</logo>
+    <icon>https://https://clownyogurt.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, 老鄂嘚吧嘚</rights>
+    <entry>
+        <title type="html"><![CDATA[Java实现对象属性复制]]></title>
+        <id>https://https://clownyogurt.github.io/post/java-shi-xian-dui-xiang-shu-xing-fu-zhi/</id>
+        <link href="https://https://clownyogurt.github.io/post/java-shi-xian-dui-xiang-shu-xing-fu-zhi/">
+        </link>
+        <updated>2020-07-03T02:44:26.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>不能用=号来实现两个对象的属性复制</strong>，那么做是错误的，以下方法可以实现Java对象属性的复制</p>
+<p><code>要用该方法，那么两个对象的属性名要相同才可以。</code></p>
+<pre><code>import org.springframework.beans.BeanUtils;
+
+BeanUtils.copyProperties(源对象, 目标对象);
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot：jdbc serverTimezone以及编码格式设置]]></title>
+        <id>https://https://clownyogurt.github.io/post/springbootjdbc-servertimezone-yi-ji-bian-ma-ge-shi-she-zhi/</id>
+        <link href="https://https://clownyogurt.github.io/post/springbootjdbc-servertimezone-yi-ji-bian-ma-ge-shi-she-zhi/">
+        </link>
+        <updated>2020-06-21T10:33:55.000Z</updated>
+        <content type="html"><![CDATA[<p>在做项目时如果连接不上数据库，很大的原因就是配置问题，这里记录下我的一种解决方式。</p>
+<p>一般情况下需要在配置文件中 url后添加<code>serverTimezone=UTC</code><br>
+还需配置编码格式以防乱码<code>characterEncoding=utf-8</code></p>
+<p>完整代码如下：<br>
+<strong><code>jdbc:mysql://127.0.0.1:3306/（自定数据库）?serverTimezone=UTC&amp;characterEncoding=utf-8</code></strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mybatis查询时，区分大小写]]></title>
+        <id>https://https://clownyogurt.github.io/post/mybatis-cha-xun-shi-qu-fen-da-xiao-xie/</id>
+        <link href="https://https://clownyogurt.github.io/post/mybatis-cha-xun-shi-qu-fen-da-xiao-xie/">
+        </link>
+        <updated>2020-06-21T02:47:23.000Z</updated>
+        <content type="html"><![CDATA[<p>在整合项目登陆的时候，发现输入账号的不同大小写竟然能够登陆。当时写的时候没有意识到原来Mybatis的查询没有区分大小写。上网查阅资料后发现是生成的xml文件没有写对，<code>需要在查询时添加BINARY</code>，因为<strong>SQL是不区分大小写的</strong></p>
+<p><strong>代码如下：</strong><br>
+<img src="https://https://clownyogurt.github.io/post-images/1592708759103.png" alt="" loading="lazy"></p>
+<p>一开始网上的都是按照单个信息查找，我这里是按照类型进行匹配，因此卡了有一段时间</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[嗯]]></title>
+        <id>https://https://clownyogurt.github.io/post/ng/</id>
+        <link href="https://https://clownyogurt.github.io/post/ng/">
+        </link>
+        <updated>2020-06-20T13:42:27.000Z</updated>
+        <content type="html"><![CDATA[<p>希望将来有一天，我可以面对pdd的一百元套路不再心动，不再需要去因为领取不到而痛苦纠结，不再因为找不到人帮忙而怀疑自己。</p>
+<p>我希望我可以</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Js进入页面只刷新一次]]></title>
+        <id>https://https://clownyogurt.github.io/post/js-jin-ru-ye-mian-zhi-shua-xin-yi-ci/</id>
+        <link href="https://https://clownyogurt.github.io/post/js-jin-ru-ye-mian-zhi-shua-xin-yi-ci/">
+        </link>
+        <updated>2020-06-17T08:44:18.000Z</updated>
+        <content type="html"><![CDATA[<p>我在更新用户信息后，希望重新向服务器获取信息，因此需要刷新一次页面。</p>
+<p>让页面进行刷新，可以使用location.reload()方法，但是这种方法会让页面一直不断的刷新，这是因为当页面加载完成以后，我们让它刷新一次，那么浏览器就会重新向服务器请求数据，界面会重新加载，然后，加载完成又调用了location.reload()方法，这样就陷入了死循环，一直处于请求然后刷新的状态。</p>
+<p>因此可以使如下方法<br>
+<img src="https://https://clownyogurt.github.io/post-images/1592383859764.png" alt="" loading="lazy"><br>
+利用以上方法，在每次进入这个页面的时候，都会绕过浏览器缓存，重新向服务器获取数据。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Js无法执行的一个小原因]]></title>
+        <id>https://https://clownyogurt.github.io/post/js-wu-fa-zhi-xing-de-yi-ge-xiao-yuan-yin/</id>
+        <link href="https://https://clownyogurt.github.io/post/js-wu-fa-zhi-xing-de-yi-ge-xiao-yuan-yin/">
+        </link>
+        <updated>2020-06-17T08:17:35.000Z</updated>
+        <content type="html"><![CDATA[<p>javascript和css不同，也可说js没有css厉害，它们的加载机制不一样，js是在页面<strong>加载完成后执行</strong>的，如果将js写在HTML代码前，有时候js效果出不来。我遇到的不能执行的场景是在处理限制密码长度时出现的，我的js就写在了<code>&lt;body&gt;&lt;/body&gt;</code>标签之前，因此不能正常执行。<br>
+<strong>常用解决方法：</strong><br>
+1.将js代码写在<body></body>的后面<br>
+2.将js代码放在onload事件里面</p>
+<hr>
+<p>自己写的js代码无法执行，原因是如果js文件是从HTML文档的<code>&lt;head&gt;</code>部分用<code>&lt;script&gt;</code>标签调用的,他会在文档之前被加载到浏览器中，如果<code>&lt;script&gt;</code>标签是在<code>&lt;/body&gt;</code>之前，那么不知道哪个文件会先被结束加载。我写的函数应该在网页加载完毕后执行，这个时候需要在js加上这么一行：<br>
+<code>window.onload = firstFunction;</code><br>
+如果有多个函数需要在页面加载后执行，可以用addLoadEvent函数</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[markdown语法]]></title>
+        <id>https://https://clownyogurt.github.io/post/markdown-yu-fa/</id>
+        <link href="https://https://clownyogurt.github.io/post/markdown-yu-fa/">
+        </link>
+        <updated>2020-06-10T15:18:09.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>记录一下markdown语法，方便自己查阅</strong></p>
+<h2 id="一-标题">一、标题</h2>
+<pre><code># 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+</code></pre>
+<h2 id="二-字体">二、字体</h2>
+<pre><code>**这是加粗的文字**
+*这是倾斜的文字*`
+***这是斜体加粗的文字***
+~~这是加删除线的文字~~
+</code></pre>
+<h2 id="三-引用">三、引用</h2>
+<pre><code>&gt;这是引用的内容
+&gt;&gt;这是引用的内容
+&gt;&gt;&gt;&gt;这是引用的内容
+</code></pre>
+<h2 id="四-分割线">四、分割线</h2>
+<pre><code>---
+----
+***
+*****
+</code></pre>
+<h2 id="五-图片">五、图片</h2>
+<pre><code>![图片alt](图片地址 ''图片title'')
+图片alt就是显示在图片下面的文字，相当于对图片内容的解释。
+图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加
+</code></pre>
+<h2 id="六-超链接">六、超链接</h2>
+<pre><code>[超链接名](超链接地址 &quot;超链接title&quot;)
+title可加可不加
+[谷歌](https://www.google.com)
+</code></pre>
+<h2 id="七-表格">七、表格</h2>
+<pre><code>表头|表头|表头
+---|:--:|---:
+内容|内容|内容
+内容|内容|内容
+
+第二行分割表头和内容。
+- 有一个就行，为了对齐，多加了几个
+文字默认居左
+-两边加：表示文字居中
+-右边加：表示文字居右
+注：原生的语法两边都要用 | 包起来。此处省略
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th style="text-align:center">技能</th>
+<th style="text-align:right">排行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>刘备</td>
+<td style="text-align:center">哭</td>
+<td style="text-align:right">大哥</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td style="text-align:center">打</td>
+<td style="text-align:right">二哥</td>
+</tr>
+<tr>
+<td>张飞</td>
+<td style="text-align:center">骂</td>
+<td style="text-align:right">三弟</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[小技巧（长期更新)]]></title>
+        <id>https://https://clownyogurt.github.io/post/xiao-ji-qiao-chang-qi-geng-xin/</id>
+        <link href="https://https://clownyogurt.github.io/post/xiao-ji-qiao-chang-qi-geng-xin/">
+        </link>
+        <updated>2020-06-10T15:01:53.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1-windows滑动关机">1、Windows滑动关机</h2>
+<p>这应该是当年微软做 Windows Phone 留下的小彩蛋。右键选择【新建】-【快捷方式】，输入如下代码，</p>
+<p><code>%windir%\System32\SlideToShutDown.exe</code></p>
+<p>点击完成。此时双击即可调出滑动关机选项。觉得没有图标不好看，可以在右键属性中自定义图标（注意图标要ico格式，可以在<a href="https://www.easyicon.net/"><strong>easyicon</strong></a>下载）。此外还可以把图标固定在任务栏或者开始屏幕。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[锻炼身体呀（zt）]]></title>
+        <id>https://https://clownyogurt.github.io/post/duan-lian-shen-ti-ya-zt/</id>
+        <link href="https://https://clownyogurt.github.io/post/duan-lian-shen-ti-ya-zt/">
+        </link>
+        <updated>2020-06-01T10:36:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>在家懒的太久了，感觉身体都不太健康了。网上看到的蹲运动文章，感觉很不错，因此记录下来，每天都要坚持锻炼呀。</p>
+<p>需要注意的是，如果长时间不添加额外的运动、或者变换蹲的姿势，你的身体就会适应运动模式，那么你的锻炼效果增长就会缓慢。所以，为防止这种情况的出现，把这里的基本蹲的变化纳入我的体能训练。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在家懒的太久了，感觉身体都不太健康了。网上看到的蹲运动文章，感觉很不错，因此记录下来，每天都要坚持锻炼呀。</p>
+<p>需要注意的是，如果长时间不添加额外的运动、或者变换蹲的姿势，你的身体就会适应运动模式，那么你的锻炼效果增长就会缓慢。所以，为防止这种情况的出现，把这里的基本蹲的变化纳入我的体能训练。</p>
+<!-- more -->
+<h2 id="一-体重蹲"><strong>一、体重蹲</strong></h2>
+<p><img src="https://https://clownyogurt.github.io/post-images/1591008177842.gif" alt="" loading="lazy"><br>
+💪<strong>做任何动作变化时，重要的是要记住，如何正确的姿势来确保每个变化没有受伤的风险。</strong></p>
+<h3 id="动作要领"><strong>动作要领：</strong></h3>
+<p>1.两脚比肩略宽，使自己的体重均匀的分布于两脚；保持背部挺直，肩胛骨拉回来。</p>
+<p>2.弯曲你的膝盖，降低你的屁股，好像你坐在一把椅子上。</p>
+<p>3.同时提高你的手臂并且水平保持在胸前。</p>
+<p>4.下蹲后还要检查你的膝盖没有超出脚趾太多；确保你的膝盖是跟随你的脚，这意味着他们不鞠躬向外或向内塌陷。</p>
+<h2 id="二-囚犯蹲"><strong>二、囚犯蹲</strong></h2>
+<p><img src="https://https://clownyogurt.github.io/post-images/1591008297464.gif" alt="" loading="lazy"><br>
+💪<strong>这种变化非常类似于普通的体重蹲，但它需要更多的平衡和协调能力。因为你的手不会在你的面前保持平衡，你需要更多的躯干保持向上的核心力量。</strong></p>
+<h3 id="动作要领-2"><strong>动作要领：</strong></h3>
+<p>1.把手放在头后</p>
+<p>2.保持背部挺直，胸部直立然后下蹲。</p>
+<p>3.你会发现你需要更多的力量相比普通蹲，但是记住不要让你的脚趾抬起离开地面。</p>
+<h2 id="三-屈膝蹲"><strong>三、屈膝蹲</strong></h2>
+<p><img src="https://https://clownyogurt.github.io/post-images/1591008617873.gif" alt="" loading="lazy"><br>
+🤞<strong>这更像一个芭蕾舞演员的动作，是一个更具挑战性的蹲。这种变化将更多的锻炼你的大腿肌肉、臀大肌、股四头肌和腿筋。</strong></p>
+<h3 id="动作要领-3"><strong>动作要领：</strong></h3>
+<p>1.两脚距离要宽于肩10厘米左右；脚趾向外约45度角。</p>
+<p>2.你可以把你的手放在你的臀部，也可以保持你的手在胸部。</p>
+<p>3.背部要保持垂直于地板，而不是略向前弯曲。</p>
+<h2 id="四-跳蹲"><strong>四、跳蹲</strong></h2>
+<p><img src="https://https://clownyogurt.github.io/post-images/1591008787394.gif" alt="" loading="lazy"><br>
+😀<strong>研究曾发现蹲可以改善你跳的高度，所以为什么不进一步把跳融入你的蹲。这种变化更为先进，所以要确保你已经完全掌握了基本蹲和健康的膝盖。</strong></p>
+<h3 id="动作要领-4"><strong>动作要领：</strong></h3>
+<p>1.和常规蹲的姿势一样，两脚距离比肩微宽。</p>
+<p>2.臀部下蹲时，把你的手臂往前摆动；跳起时手臂后摆。</p>
+<p>3.下蹲时膝盖弯曲来吸收造成的冲击力。</p>
+<h2 id="五-单腿蹲"><strong>五、单腿蹲</strong></h2>
+<figure data-type="image" tabindex="1"><img src="https://https://clownyogurt.github.io/post-images/1591008896265.gif" alt="" loading="lazy"></figure>
+<h3 id="动作要领-5"><strong>动作要领：</strong></h3>
+<p>1.两脚与臀同宽，脚尖向前。</p>
+<p>2.慢慢你的体重转移到右脚，直到你的左脚完全离开地面。</p>
+<p>3.要确保每条腿做相同的数量。</p>
+<h2 id="六-哑铃相扑蹲"><strong>六、哑铃相扑蹲</strong></h2>
+<p><img src="https://https://clownyogurt.github.io/post-images/1591009027047.gif" alt="" loading="lazy"><br>
+😀<strong>这种变化类似于酒杯蹲，诀窍是腹部和背部肌肉，防止你的胸部提前将哑铃提起。</strong></p>
+<h3 id="动作要领-6"><strong>动作要领：</strong></h3>
+<p>1.双脚宽于臀部，脚成45度。</p>
+<p>2.每个手拿着哑铃，手臂垂直放在身前两腿之间。</p>
+<p>3.弯曲你的膝盖，哑铃几乎碰触到地板上。</p>
+<p>4.注意胸部不要向前弯曲；你看起来可能会有点像相扑选手。</p>
+<h2 id="七-手枪蹲"><strong>七、手枪蹲</strong></h2>
+<p><img src="https://https://clownyogurt.github.io/post-images/1591009176438.gif" alt="" loading="lazy"><br>
+🔨<strong>作为最先进的蹲变体之一，你需要确保你已经建立了足够的单腿强度和核心稳定性。甚至比单腿蹲更高级，因为你的一条腿弯曲在你的面前。</strong></p>
+<h3 id="动作要领-7"><strong>动作要领：</strong></h3>
+<p>1.开始站立，两脚与胯同宽。</p>
+<p>2.慢慢你的体重转移到你的右腿，同时你的左腿慢慢前移到你面前。</p>
+<p>3.在胸前抬高你的手臂来帮助你保持平衡。</p>
+<p>4.要一直保持平衡，抬起的脚尽可能不去触及地面。</p>
+<p>5.左右脚做相同的次数。</p>
+<h2 id="八-蹲推力"><strong>八、蹲推力</strong></h2>
+<figure data-type="image" tabindex="2"><img src="https://https://clownyogurt.github.io/post-images/1591009388073.gif" alt="" loading="lazy"></figure>
+<h3 id="动作要领-8"><strong>动作要领：</strong></h3>
+<p>1.站立时，双脚和肩同宽，脚趾向前。</p>
+<p>2.下蹲，把你的双手放在脚前；把你体重转移到你的手，往后跳出你的脚。</p>
+<p>3.成一个俯卧撑的姿势，确保你的身体从头到脚是一条直线。</p>
+<p>4.脚调回你的手后面，站起来，重复。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[不是所有的事情都是非黑即白，但也不是让你自己没有底线]]></title>
+        <id>https://https://clownyogurt.github.io/post/zhen-hao/</id>
+        <link href="https://https://clownyogurt.github.io/post/zhen-hao/">
+        </link>
+        <updated>2020-06-01T06:36:50.000Z</updated>
+        <content type="html"><![CDATA[<p>在网上看到下边这么一段话，看完以后颇有醒悟之感</p>
+<blockquote>
+<p><strong>你和我玩就不许和我讨厌的人玩，<br>
+你是我爸妈就是这么多年只想着对我这个小孩付出，<br>
+你是我朋友不能对我有一丝抱怨和吐槽，<br>
+你是我的恋人该永远忠贞不能有一丝一毫别的念头<br>
+后来发现绝不是这样的…<br>
+因为人实在是一种太复杂的生物了<br>
+太多时候，一些行为并不代表对方不爱你或者不在乎你。<br>
+如果非要纠结就会发现世界本就是不纯粹的<br>
+迈入成年人阶段的过程中，你的三观是无限摧毁建立的<br>
+到最后你发现很多你认定错或者对的事情，<br>
+到最后只是你以为了而已…<br>
+你会发现每个人都不是你想象那般好，也不是你想象那般差<br>
+你会发现前一刻的自己的想法如此幼稚，看法过于绝对<br>
+慢慢宽容一切之后发现，其实是解放了自己。</strong></p>
+</blockquote>
+<p>所以，珍惜珍惜你的人，去爱值得爱的人，做事干脆一点。不管是感情也好，还是其他的事情也罢，当没有必要的时候，就要干脆一点。当然，不是所有的事情都是非黑即白，但是，至少我们应该有自己的底线，因为，自己最需要尊重的其实就是自己。</p>
+]]></content>
+    </entry>
+</feed>

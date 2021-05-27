@@ -1,0 +1,174 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Js进入页面只刷新一次 | 老鄂嘚吧嘚</title>
+<link rel="shortcut icon" href="https://https://clownyogurt.github.io/favicon.ico?v=1622097828084">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://https://clownyogurt.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Js进入页面只刷新一次 | 老鄂嘚吧嘚 - Atom Feed" href="https://https://clownyogurt.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="我在更新用户信息后，希望重新向服务器获取信息，因此需要刷新一次页面。
+让页面进行刷新，可以使用location.reload()方法，但是这种方法会让页面一直不断的刷新，这是因为当页面加载完成以后，我们让它刷新一次，那么浏览器就会重新向服务..." />
+    <meta name="keywords" content="编程积累" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://https://clownyogurt.github.io">
+  <img class="avatar" src="https://https://clownyogurt.github.io/images/avatar.png?v=1622097828084" alt="">
+  </a>
+  <h1 class="site-title">
+    老鄂嘚吧嘚
+  </h1>
+  <p class="site-description">
+    反正也没人看，我一个人瞎嗨
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Js进入页面只刷新一次
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-06-17
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://https://clownyogurt.github.io/tag/6G-Du7Jlu/" class="post-tag">
+                  # 编程积累
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>我在更新用户信息后，希望重新向服务器获取信息，因此需要刷新一次页面。</p>
+<p>让页面进行刷新，可以使用location.reload()方法，但是这种方法会让页面一直不断的刷新，这是因为当页面加载完成以后，我们让它刷新一次，那么浏览器就会重新向服务器请求数据，界面会重新加载，然后，加载完成又调用了location.reload()方法，这样就陷入了死循环，一直处于请求然后刷新的状态。</p>
+<p>因此可以使如下方法<br>
+<img src="https://https://clownyogurt.github.io/post-images/1592383859764.png" alt="" loading="lazy"><br>
+利用以上方法，在每次进入这个页面的时候，都会绕过浏览器缓存，重新向服务器获取数据。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://https://clownyogurt.github.io/post/js-wu-fa-zhi-xing-de-yi-ge-xiao-yuan-yin/">
+              <h3 class="post-title">
+                Js无法执行的一个小原因
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  嗯哼
+  <a class="rss" href="https://https://clownyogurt.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
